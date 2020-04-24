@@ -90,6 +90,7 @@ private:
      */
     virtual void onHeartbeat(Connection *connection) override
     {
+        (void) connection;
         // pass on to tcp handler
         if (_handler) _handler->onHeartbeat(this);
     }
@@ -107,6 +108,7 @@ private:
      */
     virtual void onReady(Connection *connection) override
     {
+        (void) connection;
         // pass on to the handler
         if (_handler) _handler->onReady(this);
     }
@@ -123,6 +125,7 @@ private:
      */
     virtual void onConnected(TcpState *state) override
     {
+        (void) state;
         // pass on to the handler
         if (_handler) _handler->onConnected(this);
     }
@@ -135,6 +138,7 @@ private:
      */
     virtual bool onSecured(TcpState *state, const SSL *ssl) override
     {
+        (void) state;
         // pass on to user-space
         return _handler && _handler->onSecured(this, ssl);
     }
@@ -147,6 +151,7 @@ private:
      */
     virtual size_t onReceived(TcpState *state, const Buffer &buffer) override
     {
+        (void) state;
         // pass on to the connection
         return _connection.parse(buffer);
     }
@@ -159,6 +164,7 @@ private:
      */
     virtual void onIdle(TcpState *state, int socket, int events) override
     {
+        (void) state;
         // pass on to user-space
         if (_handler) _handler->monitor(this, socket, events);
     }
