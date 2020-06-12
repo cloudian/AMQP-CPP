@@ -79,6 +79,7 @@ private:
          */
         static void callback(struct ev_loop *loop, struct ev_io *watcher, int revents)
         {
+            (void)loop;
             // retrieve the watched object
             Watchable *object = static_cast<Watchable*>(watcher->data);
 
@@ -207,6 +208,8 @@ private:
          */
         static void callback(struct ev_loop *loop, struct ev_timer *timer, int revents)
         {
+            (void)loop;
+            (void)revents;
             // retrieve the object
             Watchable *object = static_cast<Watchable*>(timer->data);
 
